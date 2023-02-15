@@ -1,0 +1,16 @@
+version: "3.0"
+services:
+
+  rates_db:
+    build: ./db
+    container_name: rates_task_db
+    ports:
+      - "5432:5432"
+
+  rates_frontend:
+    build: ./rates
+    container_name: rates_task_frontend
+    ports:
+      - "3000:3000"
+    links:
+      - rates_db
